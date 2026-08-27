@@ -1,0 +1,18 @@
+{
+  "name": "rezerodle",
+  "version": "2.0.3",
+  "private": true,
+  "description": "Re:Zerodle - Re:Zero character guessing game",
+  "scripts": {
+    "start": "npx serve .",
+    "cap:init": "npx cap init ReZerodle com.rezerodle.app --web-dir=.",
+    "cap:add:android": "npx cap add android",
+    "cap:sync": "npx cap sync",
+    "cap:open:android": "npx cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "latest",
+    "@capacitor/core": "latest",
+    "@capacitor/cli": "latest"
+  }
+}

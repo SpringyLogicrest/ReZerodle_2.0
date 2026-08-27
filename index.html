@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#191b27">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Re:Zerodle</title>
+</head>
+<body class="custom-body">
+    <main class="app-shell">
+        <header class="header-container">
+            <button id="home-button" class="logo-button" aria-label="Return to main menu">
+                <img src="img/rezerodle_title.png" alt="Re:Zerodle">
+            </button>
+        </header>
+
+        <section id="main-menu" class="screen active-screen">
+            <div class="menu-card fancy-background">
+                <h1>Re:Zerodle</h1>
+                <p class="menu-subtitle">Choose your knowledge level</p>
+                <div class="menu-buttons">
+                    <button class="mode-button" data-screen="anime-menu">
+                        <span class="mode-title">Anime Only</span>
+                        <span class="mode-description">Characters known from the anime</span>
+                    </button>
+                    <button class="mode-button" data-screen="ln-menu">
+                        <span class="mode-title">English Light Novel</span>
+                        <span class="mode-description">The full light-novel character pool</span>
+                    </button>
+                    <button class="mode-button" data-start-source="beako-otto" data-start-type="daily">
+                        <span class="mode-title">Beako or Otto-bro?</span>
+                        <span class="mode-description">Today’s answer is either Beatrice or Otto</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="anime-menu" class="screen">
+            <div class="menu-card fancy-background">
+                <h2>Anime Only</h2>
+                <p class="menu-subtitle">Pick a game mode</p>
+                <div class="menu-buttons two-column">
+                    <button class="mode-button" data-start-source="anime" data-start-type="daily">
+                        <span class="mode-title">Daily Character</span>
+                        <span class="mode-description">One shared character every day</span>
+                    </button>
+                    <button class="mode-button" data-start-source="anime" data-start-type="endless">
+                        <span class="mode-title">Endless / Random</span>
+                        <span class="mode-description">Keep guessing random characters</span>
+                    </button>
+                </div>
+                <button class="back-button" data-screen="main-menu">← Back</button>
+            </div>
+        </section>
+
+        <section id="ln-menu" class="screen">
+            <div class="menu-card fancy-background">
+                <h2>English Light Novel</h2>
+                <p class="menu-subtitle">Pick a game mode</p>
+                <div class="menu-buttons two-column">
+                    <button class="mode-button" data-start-source="ln" data-start-type="daily">
+                        <span class="mode-title">Daily Character</span>
+                        <span class="mode-description">One shared character every day</span>
+                    </button>
+                    <button class="mode-button" data-start-source="ln" data-start-type="endless">
+                        <span class="mode-title">Endless / Random</span>
+                        <span class="mode-description">Keep guessing random characters</span>
+                    </button>
+                </div>
+                <button class="back-button" data-screen="main-menu">← Back</button>
+            </div>
+        </section>
+
+        <section id="game-screen" class="screen">
+            <div class="game-header">
+                <!--<button id="game-back-button" class="back-button">← Menu</button>-->
+                <div>
+                    <div id="game-mode-label" class="game-mode-label"></div>
+                    <div id="game-title" class="game-title">Guess today's Re:Zero character!</div>
+                </div>
+            </div>
+
+            <div class="answers">
+                <div class="guessbox">
+                    <div class="content">
+                        <div class="search">
+                            <input id="character-search" type="text" placeholder="Type name here..." autocomplete="off" aria-label="Character name">
+                        </div>
+                        <div class="options" aria-live="polite"></div>
+                    </div>
+                </div>
+
+                <div class="guessed-answers">
+                    <div class="guessed-answers-header">
+                        <div class="square-container">
+                            <div class="square square-header-tile"><div class="square-content">Character</div><hr></div>
+                            <div class="square square-header-tile"><div class="square-content">Gender</div><hr></div>
+                            <div class="square square-header-tile"><div class="square-content">Race</div><hr></div>
+                            <div class="square square-header-tile"><div class="square-content">Height</div><hr></div>
+                            <div class="square square-header-tile"><div class="square-content">Age</div><hr></div>
+                            <div class="square square-header-tile"><div class="square-content">Affiliation</div><hr></div>
+                            <div class="square square-header-tile"><div class="square-content">Elemental Affinity</div><hr></div>
+                            <div class="square square-header-tile"><div class="square-content">Divine Protection</div><hr></div>
+                            <div class="square square-header-tile"><div class="square-content">Authority</div><hr></div>
+                        </div>
+                    </div>
+                    <div class="guessed-answers-container">
+                        <div class="user-answer"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="win-screen fancy-background" style="display: none;">
+                <div class="yay"><h2>You answered correctly!</h2></div>
+                <div class="yay-image"><img src="img/subaru-winning.gif" alt="Celebration"></div>
+                <div class="timer-info">
+                    <div class="timer-title">Next character in</div>
+                    <div class="countdown">
+                        <ul>
+                            <li><span id="hours">00</span></li><li class="separator">:</li>
+                            <li><span id="minutes">00</span></li><li class="separator">:</li>
+                            <li><span id="seconds">00</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <button id="next-endless-button" class="mode-button next-button" style="display:none;">Next Random Character</button>
+                <button id="win-menu-button" class="back-button">Back to Menu</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="javascript/character_data.js"></script>
+    <script src="javascript/character_pools.js"></script>
+    <script src="javascript/options_logic.js"></script>
+    <script src="javascript/countdown.js"></script>
+</body>
+</html>

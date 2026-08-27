@@ -1,0 +1,6 @@
+{
+  "appId": "com.rezerodle.app",
+  "appName": "Re:Zerodle",
+  "webDir": ".",
+  "bundledWebRuntime": false
+}
